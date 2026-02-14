@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
   setIsSubmitting(true);
 
   try {
-    const response = await fetch("http://84.32.84.32:9090/api/form", {
+    const response = await fetch("https://api.mohdsuhail.site/api/form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

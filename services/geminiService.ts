@@ -2,7 +2,7 @@ import { Message } from "../types";
 
 export const chatWithAssistant = async (messages: Message[]) => {
   try {
-    const response = await fetch("http://84.32.84.32:9090/api/chat", {
+    const response = await fetch("https://api.mohdsuhail.site/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
