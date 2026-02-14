@@ -1,0 +1,7 @@
+{
+  "name": "Mohd suhail-portfoilio",
+  "description": "A premium, dark-themed portfolio for freelancers featuring clean design, smooth animations, and an AI-powered personal assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

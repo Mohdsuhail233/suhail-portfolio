@@ -1,0 +1,23 @@
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #3b82f6;
+  display: inline-block;
+  width: 0;
+  animation: typing 2.5s ease-out forwards, blink 1s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 7.5ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
