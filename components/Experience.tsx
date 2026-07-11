@@ -1,11 +1,54 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Calendar, Star } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { EDUCATION_JOURNEY } from '../constants';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Experience: React.FC = () => {
+  const sectionRef = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Scroll-linked progress bar for the vertical line
+      gsap.fromTo('.progress-line', 
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.education-container',
+            start: 'top center',
+            end: 'bottom center',
+            scrub: 1, // Add scrub for smooth progress syncing with scroll
+          }
+        }
+      );
+
+      // 2. Select all education items and animate them individually when they scroll into view
+      gsap.utils.toArray('.education-item').forEach((item: any) => {
+        gsap.fromTo(item,
+          { y: 100, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+          }
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="experience" className="py-24 px-6 bg-black relative overflow-hidden">
+    <section ref={sectionRef as any} id="experience" className="py-24 px-6 bg-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
@@ -13,13 +56,16 @@ const Experience: React.FC = () => {
           </h2>
         </div>
 
-        <div className="relative">
-          {/* Central Vertical Line - Cyan/Blue as per screenshot */}
-          <div className="absolute left-[50%] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent hidden lg:block -translate-x-1/2"></div>
+        <div className="relative education-container">
+          {/* Central Vertical Line Background */}
+          <div className="absolute left-[50%] top-0 bottom-0 w-[2px] bg-white/10 hidden lg:block -translate-x-1/2"></div>
+          
+          {/* Central Vertical Line Progress (Animated) */}
+          <div className="progress-line absolute left-[50%] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-400 via-blue-500 to-blue-600 hidden lg:block -translate-x-1/2 origin-top"></div>
 
           <div className="space-y-32">
             {EDUCATION_JOURNEY.map((item, index) => (
-              <div key={item.id} className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-16 items-start">
+              <div key={item.id} className="education-item relative grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-16 items-start">
                 
                 {/* Left Card: Rating & Image */}
                 <div className={`flex flex-col items-center lg:items-end order-2 lg:order-1`}>

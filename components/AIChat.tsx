@@ -104,12 +104,12 @@ const AIChat: React.FC = () => {
       ) : (
         <button 
           onClick={() => setIsOpen(true)}
-          className="group relative p-4 bg-blue-600 text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all"
+          className="group relative p-4 bg-gradient-to-tr from-blue-600 via-blue-500 to-cyan-400 text-white rounded-full shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:scale-110 hover:shadow-[0_0_30px_rgba(59,130,246,0.8)] active:scale-95 transition-all duration-300"
         >
           <div className="absolute -top-12 -left-12 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-black text-xs font-bold px-3 py-2 rounded-xl whitespace-nowrap shadow-xl">
             Ask my AI Assistant!
           </div>
-          <Bot size={28} />
+          <Sparkles size={28} />
         </button>
       )}
     </div>

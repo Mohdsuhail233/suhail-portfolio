@@ -1,11 +1,37 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PROJECTS } from '../constants';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Work: React.FC = () => {
+  const sectionRef = useRef<HTMLSelectElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.project-card', 
+        { y: 100, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: '.project-grid',
+            start: 'top 80%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="work" className="py-24 px-6 bg-[#050505] min-h-screen">
+    <section ref={sectionRef as any} id="work" className="py-24 px-6 bg-[#050505] min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h3 className="text-5xl font-bold mb-6">
@@ -16,18 +42,18 @@ const Work: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project) => (
             <div 
               key={project.id}
-              className="flex flex-col bg-[#0c0c0c] border border-white/5 rounded-2xl overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-xl"
+              className="project-card flex flex-col bg-[#0c0c0c] border border-white/5 rounded-2xl overflow-hidden group hover:border-white/10 transition-all duration-300 shadow-xl"
             >
               {/* Image Container */}
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-video overflow-hidden bg-black/20">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">

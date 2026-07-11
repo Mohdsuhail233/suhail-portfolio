@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { 
-  Linkedin, 
-  Github, 
+import {
+  Linkedin,
+  Github,
   Instagram,
 } from 'lucide-react';
 import { Project } from './types';
@@ -11,14 +11,13 @@ export const NAV_LINKS = [
   { name: 'Work', href: '#work' },
   { name: 'Experience', href: '#experience' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Resume', href: '#resume' },
 ];
 
 export const SOCIAL_LINKS = [
   { name: 'LinkedIn', icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/mohd-suhail-108263320' },
   { name: 'Github', icon: <Github size={18} />, href: 'https://github.com/Mohdsuhail233' },
   { name: 'Instagram', icon: <Instagram size={18} />, href: 'https://www.instagram.com/suhail.builds/' },
-  
+
 ];
 
 export const PROJECTS: Project[] = [
@@ -32,44 +31,63 @@ export const PROJECTS: Project[] = [
     githubUrl: '#'
   },
 
- {
+  {
     id: '2',
     title: 'Nobel Rain – E-Commerce Web Application',
     description: 'Designed and developed a modern e-commerce platform for a fictional company. The application features a responsive UI, product listings, cart functionality, and secure checkout.',
     image: 'https://cdn.dribbble.com/userupload/13540100/file/original-4c2079cc556439132582b683cca47712.jpg?resize=400x0',
-    tags: ['Spring Boot', 'React','MySQL', ' Spring Security', 'JWT','Aws-S3'],
+    tags: ['Spring Boot', 'React', 'MySQL', ' Spring Security', 'JWT', 'Aws-S3'],
     liveUrl: 'https://nobelrain-web.netlify.app/',
     githubUrl: '#'
- },
+  },
 
   //{
-    //id: '2',
-   // title: 'RAG Based AI PDF Analyzer',
-//description: 'AI-powered document processing with intelligent Q&A capabilities, utilizing retrieval-augmented generation for accuracy.',
+  //id: '2',
+  // title: 'RAG Based AI PDF Analyzer',
+  //description: 'AI-powered document processing with intelligent Q&A capabilities, utilizing retrieval-augmented generation for accuracy.',
   //  image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop',
-   // tags: ['TypeScript', 'OpenAI', 'PostgreSQL', 'RAG', 'Langchain', 'Milvus', 'Vector DB', 'React', 'Node'],
-   // liveUrl: '#',
-   // githubUrl: '#'
+  // tags: ['TypeScript', 'OpenAI', 'PostgreSQL', 'RAG', 'Langchain', 'Milvus', 'Vector DB', 'React', 'Node'],
+  // liveUrl: '#',
+  // githubUrl: '#'
   //},
   {
     id: '3',
     title: 'Nidar Sanstha (NGO)',
     description: 'Developed a structured software system to manage user health records along with internal staff data The platform enables efficient record storage, staff information tracking, and organized data management through a secure and responsive interface Designed and implemented RBAC to restrict system access based on user roles, ensuring controlled and secure data operation',
     image: 'https://lirp.cdn-website.com/eeb64761/dms3rep/multi/opt/Volunteer%2BExpo-640w.jpg',
-   tags: ['Oracle Cloud','React', 'Tailwind', 'Spring Boot', 'Spring security','JWT', 'MYSQL', 'RBAC'],
+    tags: ['Oracle Cloud', 'React', 'Tailwind', 'Spring Boot', 'Spring security', 'JWT', 'MYSQL', 'RBAC'],
     liveUrl: 'https://nidar-sanstha-frontend.vercel.app',
     githubUrl: '#'
   },
 
-   {
+  {
     id: '4',
     title: 'CareerVeda – Online Course Selling Platform',
     description: 'A full-stack course selling web application designed to help professionals enroll in industry-relevant programs. Built with scalable backend architecture and responsive UI focused on conversions ',
     image: 'https://img.freepik.com/free-vector/flat-design-minimal-technology-youtube-thumbnail_23-2149150484.jpg',
-   tags: ['Oracle Cloud','React', 'Tailwind', 'Spring Boot', 'Spring security','JWT', 'MYSQL', 'REST APIs'],
+    tags: ['Oracle Cloud', 'React', 'Tailwind', 'Spring Boot', 'Spring security', 'JWT', 'MYSQL', 'REST APIs'],
     liveUrl: 'https://astounding-unicorn-79f00d.netlify.app',
     githubUrl: '#'
+  },
+
+  {
+    id: '5',
+    title: 'Aurk Desgin Studio',
+    description: 'Aurk Design Studio is a modern and responsive interior design website built to showcase premium residential and commercial interior services. The project features a clean UI, smooth animations, service highlights, project gallery, client testimonials, and a mobile-friendly layout. The website focuses on creating a luxurious digital presence while delivering an engaging user experience and strong brand identity.',
+    image: '/image/image.png',
+    tags: [
+      'React',
+      'CSS3',
+      'JavaScript',
+      'GSAP',
+      'Swiper.js',
+      'Responsive Design'
+    ],
+    liveUrl: 'https://aurkdesignstudio.vercel.app/',
+    githubUrl: '#'
   }
+
+
 ];
 
 export interface SkillItem {
